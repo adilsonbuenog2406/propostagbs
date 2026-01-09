@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core palette - Premium Navy & Gold */
+    --background: 220 30% 7%;
+    --foreground: 45 20% 95%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 45 20% 95%;
+
+    /* Primary - Deep Navy */
+    --primary: 220 40% 13%;
+    --primary-foreground: 45 30% 90%;
+
+    /* Secondary - Warm White */
+    --secondary: 45 30% 96%;
+    --secondary-foreground: 220 40% 13%;
+
+    /* Muted */
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 15% 60%;
+
+    /* Accent - Elegant Gold */
+    --accent: 42 85% 55%;
+    --accent-foreground: 220 40% 10%;
+
+    /* Gold variations */
+    --gold: 42 85% 55%;
+    --gold-light: 42 70% 70%;
+    --gold-dark: 42 90% 40%;
+
+    /* Navy variations */
+    --navy: 220 40% 13%;
+    --navy-light: 220 30% 20%;
+    --navy-dark: 220 45% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 42 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(42 85% 55%) 0%, hsl(35 90% 45%) 100%);
+    --gradient-navy: linear-gradient(180deg, hsl(220 40% 13%) 0%, hsl(220 45% 8%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 45% 8%) 0%, hsl(220 35% 15%) 50%, hsl(220 45% 8%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 25% 12%) 0%, hsl(220 30% 8%) 100%);
+
+    /* Shadows */
+    --shadow-gold: 0 4px 30px -5px hsl(42 85% 55% / 0.25);
+    --shadow-card: 0 10px 40px -10px hsl(220 50% 5% / 0.5);
+    --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.4);
+
+    --sidebar-background: 220 40% 13%;
+    --sidebar-foreground: 45 20% 95%;
+    --sidebar-primary: 42 85% 55%;
+    --sidebar-primary-foreground: 220 40% 10%;
+    --sidebar-accent: 220 25% 18%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 42 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+  }
+
+  /* Remove Lovable watermark badge if injected in dev */
+  #lovable-badge-cta {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(42 85% 55%) 0%, hsl(35 90% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient-gold {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+                linear-gradient(135deg, hsl(42 85% 55%) 0%, hsl(35 90% 45%) 100%) border-box;
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: hsl(220 30% 10% / 0.8);
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .gold-line::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(42 85% 55%), hsl(35 90% 45%));
+    margin-top: 1rem;
+  }
+
+  .gold-line-center::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
